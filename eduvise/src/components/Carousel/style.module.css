@@ -1,0 +1,11 @@
+.item1,.item2,.item3,.item4,.item5,.item6{
+    color: white;
+    width: 350px;
+    margin: 0 auto;
+    text-align: center;
+}
+.image1{
+    height: 200px;
+    background-color: white;
+    margin-left: 13px;
+}
