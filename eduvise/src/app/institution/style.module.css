@@ -1,0 +1,49 @@
+.container{
+    width: 1000px;
+    height: 600px;
+    position: absolute;
+    top:200px;
+    margin-left: 380px;
+    overflow-y: auto; /* Enable vertical scrolling */
+  max-height: 400px; /* Set maximum height for scrollable content */
+}
+.heading{
+    width: 1000px;
+    height: 100px;
+    background-color: #334F57;
+    font-size: 50px;
+    font-weight: bold;
+    text-align: center;
+    padding: 20px;
+    color: white;
+}
+.details{
+    width: 1000px;
+    height: 700px;
+    margin-top: 60px;
+    background-color: pink;
+}
+.image{
+    width: 1000px;
+    height: 200px;
+}
+.links{
+    position: absolute;
+    top:50px;
+    margin-top: 100px;
+    width: 300px;
+    height: 200px;
+    margin-left: 600px;
+   
+}
+.link{
+    width: 390px;
+    height: 127px;
+    margin: 10px;
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+    padding: 40px;
+    text-align: center;
+    background-color: #385A64;
+}
