@@ -12,15 +12,18 @@
     "@ant-design/icons": "^5.3.6",
     "antd": "^5.16.4",
     "antd-style": "^3.6.2",
-    "next": "14.2.2",
+    "axios": "^1.6.8",
+    "next": "^14.2.3",
     "react": "^18",
     "react-dom": "^18",
-    "react-multi-carousel": "^2.8.5"
+    "react-multi-carousel": "^2.8.5",
+    "redux-actions": "^3.0.0"
   },
   "devDependencies": {
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "@types/redux-actions": "^2.6.5",
     "eslint": "^8",
     "eslint-config-next": "14.2.2",
     "typescript": "^5"

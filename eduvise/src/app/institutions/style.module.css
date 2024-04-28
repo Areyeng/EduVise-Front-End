@@ -4,8 +4,7 @@
     position: absolute;
     top:200px;
     margin-left: 380px;
-    overflow-y: auto; /* Enable vertical scrolling */
-  max-height: 400px; /* Set maximum height for scrollable content */
+  
 }
 .heading{
     width: 1000px;
@@ -19,7 +18,7 @@
 }
 .details{
     width: 1000px;
-    height: 700px;
+    height: 400px;
     margin-top: 60px;
     background-color: pink;
 }

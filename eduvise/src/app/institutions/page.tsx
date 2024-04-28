@@ -1,10 +1,12 @@
 'use client'
-import Image from "next/image";
 import styles from "./style.module.css";
-import NavBar from "@/components/NavBar";
 import SideNav from "@/components/SideNav";
 
+
+
+
 export default function Institution(): React.ReactNode {
+  
   return (
         <>
           <SideNav/>
@@ -14,10 +16,10 @@ export default function Institution(): React.ReactNode {
               </div>
               <div className={styles.details}>
                 <div className={styles.image}>
-                  <Image src="/institution.jpg" width="1000" height="300" alt="eduvise-logo"  />
+                  {/* <Image src="/institution.jpg" width="1000" height="300" alt="eduvise-logo"  /> */}
                 </div>
               </div>
-              {/* <div className={styles.links}>
+              <div className={styles.links}>
                 <div className={styles.link}>
                   <p>Explore Programmes</p>
                 </div>
@@ -27,7 +29,7 @@ export default function Institution(): React.ReactNode {
                 <div className={styles.link}>
                   <p>Apply 2025</p>
                 </div>
-              </div> */}
+              </div>
           
             </div>
         </>
