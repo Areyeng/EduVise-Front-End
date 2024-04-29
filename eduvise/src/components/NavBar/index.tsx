@@ -1,5 +1,4 @@
 import { useStyles } from "./style";
-import Image from "next/image";
 import { Menu } from 'antd';
 import Link from "next/link";
 

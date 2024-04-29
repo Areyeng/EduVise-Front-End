@@ -27,13 +27,12 @@ export function getAxiosInstance (accessToken: string | null){
 const InstitutionProvider: React.FC<InstitutionProviderProps> = ({ children }) => {
     const [state, dispatch] = useReducer(institutionReducer, InstitutionStateContextInitial);
 
-    const GetInstitution = async (InstitutionId:any) => {
+    const GetInstitution = async (InstitutionId:string) => {
         try {
             dispatch(getInstitutionPendingAction());
-            getData(`/Institution/Get?Id=${InstitutionId}`)
+            getData(`/Institution/GetByInstitutionId?Id=${InstitutionId}`)
                 .then((resp) => {
                 if (resp?.success) {
-                   message.success("Fetched Institution succesfully");
                    dispatch(getInstitutionSuccessAction(resp?.result));
                   
                 } else {
@@ -49,17 +48,14 @@ const InstitutionProvider: React.FC<InstitutionProviderProps> = ({ children }) =
     
     const GetAllInstitutions = async () => {
         try {
-                console.log("get all called");
                 dispatch(getAllInstitutionsPendingAction());
                 getData('/Institution/GetAllInstitutions')
                     .then((resp) => {
-                        console.log(JSON.stringify(resp));
-                    if (resp?.success) {
-                        dispatch(getAllInstitutionsSuccessAction(resp?.result));
-                        console.log("items", resp?.result);
-                    } else {
-                        dispatch(getAllInstitutionsErrorAction()) 
-                    }
+                if (resp?.success) {
+                    dispatch(getAllInstitutionsSuccessAction(resp?.result));
+                } else {
+                    dispatch(getAllInstitutionsErrorAction()) 
+                }
             })
         } catch (error) {
             dispatch(getAllInstitutionsErrorAction())

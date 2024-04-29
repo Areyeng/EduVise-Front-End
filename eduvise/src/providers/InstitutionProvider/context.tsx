@@ -2,6 +2,7 @@ import { createContext } from 'react';
 import { Institution, InstitutionActions, InstitutionState} from './interface';
 
 export const INITIAL_INSTITUTION: Institution = {
+    id: '',
     name : '',
     description : '',
     accreditation : '',
@@ -24,9 +25,9 @@ export const InstitutionStateContextInitial: InstitutionState = {
 }
 
 export const InstitutionActionsDefault =  {
-    GetInstitution: (InstitutionId: '') => {},
+    GetInstitution: (InstitutionId: string) => {},
     GetAllInstitutions: () => Promise<any>,
-    DeleteInstitution: (id: '') => {},
+    DeleteInstitution: (id: string) => {},
 }
 
 export const InstitutionStateContext = createContext(InstitutionStateContextInitial);

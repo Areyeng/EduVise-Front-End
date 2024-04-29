@@ -28,11 +28,11 @@ export const getFundingPendingAction = createAction(
 );
 export const getFundingSuccessAction = createAction(
     FundingActionTypes.GetFundingSuccess,
-    (newFunding: Funding) => ({
+    (funding: Funding) => ({
         isPending: false,
         isSuccess: true,
         isError: false,
-        newFunding
+        funding
     })
 );
 export const getFundingErrorAction = createAction(
@@ -54,11 +54,11 @@ export const getAllFundingsPendingAction = createAction(
 );
 export const getAllFundingsSuccessAction = createAction(
     FundingActionTypes.GetAllFundingsSuccess, 
-    (Fundings: Funding[]) => ({
+    (fundings: Funding[]) => ({
         isPending: false,
         isSuccess: true,
         isError: false,
-        Fundings
+        fundings
     })
 );
 export const getAllFundingsErrorAction = createAction(

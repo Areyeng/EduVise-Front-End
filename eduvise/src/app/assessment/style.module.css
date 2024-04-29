@@ -1,0 +1,43 @@
+.container {
+    width: 900px;
+    height: 700px;
+    margin: 100px auto;
+    background-color: #385A64;
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+}
+.heading{
+    margin-top: 50px;
+    color: white;
+}
+.content {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+}
+
+.firstText, .secondText {
+    color: white;
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+
+.phases {
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+}
+
+.phase1, .phase2 {
+    width: 500px; 
+    height: 50px;
+    border: solid white 1px;
+    color: white;
+    margin-top: 20px;
+    text-align: center;
+    padding: 15px;
+}
+

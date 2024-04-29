@@ -32,12 +32,10 @@ const FundingProvider: React.FC<FundingProviderProps> = ({ children }) => {
     const GetFunding = async (FundingId:any) => {
         try {
             dispatch(getFundingPendingAction());
-            getData(`/Funding/GetByFundingID?Id=${FundingId}`)
+            getData(`/Funding/GetByFundingId?Id=${FundingId}`)
                 .then((resp) => {
                 if (resp?.success) {
-                   message.success("Fetched Funding succesfully");
-                   dispatch(getFundingSuccessAction(resp?.result));
-                  
+                    dispatch(getFundingSuccessAction(resp?.result));
                 } else {
                     message.error("Funding not fetched")
                     dispatch(getFundingErrorAction())
@@ -54,11 +52,8 @@ const FundingProvider: React.FC<FundingProviderProps> = ({ children }) => {
             dispatch(getAllFundingsPendingAction());
             getData('/Funding/GetAllFundings')
                 .then((resp) => {
-                    console.log(JSON.stringify(resp));
                 if (resp?.success) {
-                   message.success("Fetched Fundings succesfully");
-                   console.log("items", resp?.result?.items);
-                   dispatch(getAllFundingsSuccessAction(resp?.result?.items));
+                   dispatch(getAllFundingsSuccessAction(resp?.result));
                 } else {
                    dispatch(getAllFundingsErrorAction())
                 }

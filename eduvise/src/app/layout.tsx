@@ -1,14 +1,14 @@
 'use client'
-import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import NavBar from "@/components/NavBar";
-import Institution from "./institutions/page";
+import AppFooter from "@/components/Footer";
 import { InstitutionProvider } from "@/providers/InstitutionProvider";
 import { FacultyProvider } from "@/providers/FacultyProvider";
 import { CourseProvider } from "@/providers/CourseProvider";
 import { FundingProvider } from "@/providers/FundingProvider";
 import { EventProvider } from "@/providers/EventProvider";
+
 
 
 const inter = Inter({ subsets: ["latin"] });
@@ -29,6 +29,7 @@ export default function RootLayout({
                 <body className={inter.className}>
                   <NavBar/>
                   {children}
+                  <AppFooter/>
                 </body>
               </html>
             </EventProvider>

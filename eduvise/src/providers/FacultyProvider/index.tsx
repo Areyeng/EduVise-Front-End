@@ -31,7 +31,7 @@ const FacultyProvider: React.FC<FacultyProviderProps> = ({ children }) => {
     const GetFaculty = async (FacultyId:any) => {
         try {
             dispatch(getFacultyPendingAction());
-            getData(`/Faculty/GetByFacultyID?Id=${FacultyId}`)
+            getData(`/Faculty/GetByFacultyId?Id=${FacultyId}`)
                 .then((resp) => {
                 if (resp?.success) {
                    message.success("Fetched Faculty succesfully");
@@ -51,20 +51,17 @@ const FacultyProvider: React.FC<FacultyProviderProps> = ({ children }) => {
     const GetAllFaculties = async () => {
         try {
             dispatch(getAllFacultiesPendingAction());
-            getData('/Faculty/GetAllFacultys')
+            getData('/Faculty/GetAllFaculties')
                 .then((resp) => {
-                    console.log(JSON.stringify(resp));
                 if (resp?.success) {
-                   message.success("Fetched Facultys succesfully");
-                   console.log("items", resp?.result?.items);
-                   dispatch(getAllFacultiesSuccessAction(resp?.result?.items));
+                    dispatch(getAllFacultiesSuccessAction(resp?.result));
                 } else {
-                   dispatch(getAllFacultiesErrorAction())//If it didn't follow endpoint policies 
+                   dispatch(getAllFacultiesErrorAction())
                 }
             })
-        } catch (error) {
-            message.error("Facultys not fetched")//API not running,Axios suddenly faulty
-            dispatch(getAllFacultiesErrorAction())
+        }catch(error){
+                message.error("Faculties not fetched")
+                dispatch(getAllFacultiesErrorAction())
         }
     }
     const DeleteFaculty = async (id:string) => {

@@ -4,6 +4,7 @@ export const useStyles = createStyles(({ css }) => ({
     menu: css`
         background-color: #385A64;
         font-weight: bold;
+        width: 1537px;
         height: 100px;
         padding:30px 150px;
         justify-content: right;

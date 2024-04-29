@@ -1,15 +1,15 @@
 export interface Event {
-    Name : string,
-    Description : string,
-    Type : string,// (Open Day,Career Fair,Information Session etc)
-    DateTime : Date,
-    Venue : string,
-    //Guid InstitutionId : 
+    name : string,
+    description : string,
+    type : string,
+    dateTime : Date,
+    venue : string,
+    id: string
 }
 
 export interface EventState {
-    institution?: Event;
-    institutions?: Event[];
+    event?: Event;
+    events?: Event[];
     isPending?: boolean;
     isSuccess?: boolean;
     isError?: boolean;
@@ -23,11 +23,12 @@ export interface EventActions {
 export interface EventAction{
     type: string,
     payload?: {
-        Name : string,
-        Description : string,
-        Type : string,
-        DateTime : Date,
-        Venue : string,
+        name : string,
+        description : string,
+        type : string,
+        dateTime : Date,
+        venue : string,
+        id: string
     } 
 }
 

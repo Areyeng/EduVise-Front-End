@@ -1,15 +1,13 @@
 export interface Faculty {
-    Name : string,
-    Description : string,
-    Type : string,// (Open Day,Career Fair,Information Session etc)
-    DateTime : Date,
-    Venue : string,
-    //Guid InstitutionId : 
+   name : string,
+   description : string,
+   requiredSubjects : string,
+   id : string
 }
 
 export interface FacultyState {
-    institution?: Faculty;
-    institutions?: Faculty[];
+    faculty?: Faculty;
+    faculties?: Faculty[];
     isPending?: boolean;
     isSuccess?: boolean;
     isError?: boolean;
@@ -23,11 +21,10 @@ export interface FacultyActions {
 export interface FacultyAction{
     type: string,
     payload?: {
-        Name : string,
-        Description : string,
-        Type : string,
-        DateTime : Date,
-        Venue : string,
+        name : string,
+        description : string,
+        requiredSubjects : string,
+        id : string
     } 
 }
 

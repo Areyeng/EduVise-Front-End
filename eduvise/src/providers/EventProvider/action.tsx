@@ -28,11 +28,11 @@ export const getEventPendingAction = createAction(
 );
 export const getEventSuccessAction = createAction(
     EventActionTypes.GetEventSuccess,
-    (newEvent: Event) => ({
+    (event: Event) => ({
         isPending: false,
         isSuccess: true,
         isError: false,
-        newEvent
+        event
     })
 );
 export const getEventErrorAction = createAction(
@@ -54,11 +54,11 @@ export const getAllEventsPendingAction = createAction(
 );
 export const getAllEventsSuccessAction = createAction(
     EventActionTypes.GetAllEventsSuccess,
-    (Events: Event[]) => ({
+    (events: Event[]) => ({
         isPending: false,
         isSuccess: true,
         isError: false,
-        Events
+        events
     })
 );
 export const getAllEventsErrorAction = createAction(

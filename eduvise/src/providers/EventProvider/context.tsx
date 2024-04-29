@@ -2,19 +2,20 @@ import { createContext } from 'react';
 import { Event, EventActions, EventState} from './interface';
 
 export const INITIAL_INSTITUTION: Event = {
-    Name : '',
-    Description : '',
-    Type : '',
-    DateTime : new Date,
-    Venue : '',
+    name : '',
+    description : '',
+    type : '',
+    dateTime : new Date,
+    venue : '',
+    id:''
 }
 
 export const EventStateContextInitial: EventState = {
-    institution: INITIAL_INSTITUTION,
-    institutions: [],
+    event: INITIAL_INSTITUTION,
+    events: [],
     isPending: false,
     isSuccess: false,
-    isError: false,
+    isError: false
 }
 
 export const EventActionsDefault =  {
@@ -23,7 +24,6 @@ export const EventActionsDefault =  {
     DeleteEvent: (id: string) => {},
 }
 
-//export const EventStateContext = createContext(EventStateContextInitial);
 export const EventActionsContext = createContext<EventActions>(EventActionsDefault);
 export const EventStateContext = createContext(EventStateContextInitial);
 

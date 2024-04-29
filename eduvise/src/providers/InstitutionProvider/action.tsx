@@ -30,11 +30,11 @@ export const getInstitutionPendingAction = createAction(
 export const getInstitutionSuccessAction = createAction(
     InstitutionActionTypes.GetInstitutionSuccess,
     // Payload creator returns payload of the action 
-    (newInstitution: Institution) => ({
+    (institution: Institution) => ({
         isPending: false,
         isSuccess: true,
         isError: false,
-        newInstitution
+        institution
     })
 );
 export const getInstitutionErrorAction = createAction(

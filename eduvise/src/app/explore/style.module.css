@@ -5,14 +5,14 @@
     top: 0;
     left: 50%;
     transform: translateX(-50%);
-    z-index: -1; /* Place the image behind the content */
+    z-index: -1;
 
   }
   .backgroundDiv {
     width: 1350px;
     height:200px;
     margin-top: 150px;
-    margin-left: 250px;
+    margin-left: 90px;
     background-color: white;
     opacity: 0.7;
   }

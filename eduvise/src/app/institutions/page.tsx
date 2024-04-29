@@ -1,37 +1,43 @@
 'use client'
+import Image from "next/image";
 import styles from "./style.module.css";
-import SideNav from "@/components/SideNav";
+import SearchBar from "@/components/SearchBar";
+import { useContext, useEffect, useState } from "react";
+import { InstitutionActionsContext } from "@/providers/InstitutionProvider/context";
+import InstitutionCard from "@/components/InstitutionCard";
 
+export default function AllInstitutions(): React.ReactNode {
+    const { GetAllInstitutions } = useContext(InstitutionActionsContext);
 
+    useEffect(() => {
+        try {
+                GetAllInstitutions().then(() => {
+            });
 
+        } catch (error) {
+                console.error('Error fetching all institutions:', error);
+        }
+    }, []);
 
-export default function Institution(): React.ReactNode {
-  
-  return (
-        <>
-          <SideNav/>
-            <div className={styles.container}>
-              <div className={styles.heading}>
-                <p>University Name</p>
-              </div>
-              <div className={styles.details}>
-                <div className={styles.image}>
-                  {/* <Image src="/institution.jpg" width="1000" height="300" alt="eduvise-logo"  /> */}
+    return (
+        <div className={styles.container}>
+            <div className={styles.top}>
+                <div className={styles.backgroundImage}>
+                <Image src="/university-bg.jpg" width="1520" height="470" alt="eduvise-logo" />
                 </div>
-              </div>
-              <div className={styles.links}>
-                <div className={styles.link}>
-                  <p>Explore Programmes</p>
+                <div className={styles.backgroundDiv}>
+                <h1 className={styles.heading}>EXPLORE</h1>
+                <SearchBar />
                 </div>
-                <div className={styles.link}>
-                  <p>View 2024 Yearbook</p>
-                </div>
-                <div className={styles.link}>
-                  <p>Apply 2025</p>
-                </div>
-              </div>
-          
             </div>
-        </>
+            <div>
+                <div>
+                <div className={styles.heading}>
+                    <p>INSTITUTIONS</p>
+                </div>
+                <InstitutionCard/>
+                </div>
+            </div>
+        </div>
   );
 }

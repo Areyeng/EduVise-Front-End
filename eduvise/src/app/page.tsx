@@ -8,7 +8,7 @@ export default function Home() {
         <main className={styles.main}>
             <div className={styles.mainTop}>
                 <div className={styles.backgroundImage}>
-                    <Image src="/university-bg.jpg" width="1900" height="970" alt="eduvise-logo"  />
+                    <Image src="/university-bg.jpg" width="1520" height="970" alt="eduvise-logo"  />
                 </div>
                 <div className={styles.backgroundDiv}>
                 </div>

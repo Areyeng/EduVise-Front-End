@@ -2,20 +2,22 @@ import { createContext } from 'react';
 import { Funding, FundingActions, FundingState} from './interface';
 
 export const INITIAL_INSTITUTION: Funding = {
-    Name : '',
-    Description : '',
-    InstitutionCriteria :'',
-    FacultyCriteria : '',
-    AnnualAmount : 0,
-    Duration : 0,
-    OpeningDate : new Date,
-    ClosingDate : new Date,
-    FundingLink : new Date,
+    name : '',
+    description : '',
+    institutionCriteria :'',
+    facultyCriteria : '',
+    annualAmount : 0,
+    markCriteria: '',
+    duration : 0,
+    openingDate : '',
+    closingDate : '',
+    fundingLink :'',
+    id: '',
 }
 
 export const FundingStateContextInitial: FundingState = {
-    institution: INITIAL_INSTITUTION,
-    institutions: [],
+    funding: INITIAL_INSTITUTION,
+    fundings: [],
     isPending: false,
     isSuccess: false,
     isError: false,

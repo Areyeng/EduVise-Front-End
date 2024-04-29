@@ -2,16 +2,15 @@ import { createContext } from 'react';
 import { Faculty, FacultyActions, FacultyState} from './interface';
 
 export const INITIAL_INSTITUTION: Faculty = {
-    Name : '',
-    Description : '',
-    Type : '',
-    DateTime : new Date,
-    Venue : '',
+    name : '',
+    description : '',
+    requiredSubjects : '',
+    id : ''
 }
 
 export const FacultyStateContextInitial: FacultyState = {
-    institution: INITIAL_INSTITUTION,
-    institutions: [],
+    faculty: INITIAL_INSTITUTION,
+    faculties: [],
     isPending: false,
     isSuccess: false,
     isError: false,

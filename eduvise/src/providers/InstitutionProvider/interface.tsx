@@ -1,4 +1,5 @@
 export interface Institution {
+    id:string,
     name : string,
     description : string,
     accreditation : string,
@@ -28,6 +29,7 @@ export interface InstitutionActions {
 export interface InstitutionAction{
     type: string,
     payload?: {
+        id:string,
         name : string,
         description : string,
         accreditation : string,

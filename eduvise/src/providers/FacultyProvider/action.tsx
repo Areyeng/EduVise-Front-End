@@ -4,9 +4,9 @@ import { Faculty } from "./interface";
 
 export enum FacultyActionTypes {
 
-    GetFacultiesPending = "GetFacultiesPending",
-    GetFacultiesSuccess = "GetFacultiesSuccess",
-    GetFacultiesError = "GetFacultiesError",
+    GetFacultyPending = "GetFacultiesPending",
+    GetFacultySuccess = "GetFacultiesSuccess",
+    GetFacultyError = "GetFacultiesError",
 
     GetAllFacultiesPending = "GetAllFacultiesPending",
     GetAllFacultiesSuccess = "GetAllFacultiesSuccess",
@@ -19,7 +19,7 @@ export enum FacultyActionTypes {
 }
 
 export const getFacultyPendingAction = createAction(
-    FacultyActionTypes.GetFacultiesPending,
+    FacultyActionTypes.GetFacultyPending,
     () => ({
         isPending: true,
         isSuccess: false,
@@ -27,16 +27,16 @@ export const getFacultyPendingAction = createAction(
     })
 );
 export const getFacultySuccessAction = createAction(
-    FacultyActionTypes.GetFacultiesSuccess,
-    (newFaculties: Faculty) => ({
+    FacultyActionTypes.GetFacultySuccess,
+    (faculty: Faculty) => ({
         isPending: false,
         isSuccess: true,
         isError: false,
-        newFaculties
+        faculty
     })
 );
 export const getFacultyErrorAction = createAction(
-    FacultyActionTypes.GetFacultiesError,
+    FacultyActionTypes.GetFacultyError,
     () => ({
         isPending: false,
         isSuccess: false,
@@ -54,11 +54,11 @@ export const getAllFacultiesPendingAction = createAction(
 );
 export const getAllFacultiesSuccessAction = createAction(
     FacultyActionTypes.GetAllFacultiesSuccess, 
-    (Facultiess: Faculty[]) => ({
+    (faculties: Faculty[]) => ({
         isPending: false,
         isSuccess: true,
         isError: false,
-        Facultiess
+        faculties
     })
 );
 export const getAllFacultiesErrorAction = createAction(

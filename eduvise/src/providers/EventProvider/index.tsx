@@ -55,13 +55,10 @@ const EventProvider: React.FC<EventProviderProps> = ({ children }) => {
             dispatch(getAllEventsPendingAction());
             getData('/Event/GetAllEvents')
                 .then((resp) => {
-                    console.log(JSON.stringify(resp));
                 if (resp?.success) {
-                   message.success("Fetched Events succesfully");
-                   console.log("items", resp?.result?.items);
-                   dispatch(getAllEventsSuccessAction(resp?.result?.items));
+                    dispatch(getAllEventsSuccessAction(resp?.result));
                 } else {
-                   dispatch(getAllEventsErrorAction())//If it didn't follow endpoint policies 
+                    dispatch(getAllEventsErrorAction())//If it didn't follow endpoint policies 
                 }
             })
         } catch (error) {
