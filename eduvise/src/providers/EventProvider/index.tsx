@@ -105,4 +105,4 @@ const useEventActions = () => {
     return context;
 };
 
-export { EventProvider, useEventState, useEventActions };
+export { EventProvider, useEventState, useEventActions };``
