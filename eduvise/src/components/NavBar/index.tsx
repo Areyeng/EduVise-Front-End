@@ -1,9 +1,14 @@
-import {useStyles} from "./style";
-import Image from "next/image";
+import { useStyles } from "./style";
 import { Menu } from 'antd';
 import Link from "next/link";
 
 const { Item } = Menu;
+
+const data=[
+    {'name':'Home','href':'./'},
+    {'name':'Explore', 'href':'/explore'},
+    {'name':'Login','href':'/login'}
+];
 
 export default function NavBar() :React.ReactNode{
     const { styles, cx } = useStyles();
@@ -12,17 +17,11 @@ export default function NavBar() :React.ReactNode{
             <div>
                 {/* <Image src="/logo.png" width="100" height="100" alt="eduvise-logo" /> */}
             </div>
-            <Item key="home">
-                <Link href="/">Home</Link>
-            </Item>
-            <Item key="explore">
-                <Link href="/explore">Explore</Link>
-            </Item>
-            <Item key="Log In">
-                <Link href="/login">Login</Link>
-            </Item>
+            {data.map((item,index) => (
+                <Item key={index}>
+                    <Link href={item.href} className={styles.link}>{item.name}</Link>
+                </Item>
+            ))}
         </Menu>
     );
 };
-
-

@@ -1,0 +1,44 @@
+/* style.module.css */
+
+.container {
+    width: 900px;
+    height: 500px;
+    margin: 100px auto;
+    background-color: #385A64;
+    display: flex;
+    flex-direction: column; 
+    justify-content: center;
+    align-items: center;
+}
+.heading{
+    color: white;
+}
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.firstText, .secondText {
+    color: white;
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+
+.phases {
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+}
+
+.phase1, .phase2 {
+    width: 500px; 
+    height: 50px;
+    border: solid white 1px;
+    color: white;
+    margin-top: 20px;
+    text-align: center;
+    padding: 15px;
+}
+
