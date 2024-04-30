@@ -28,4 +28,5 @@ export const CourseActionsDefault =  {
     DeleteCourse: (id: string) => {},
 }
 
-
+export const CourseStateContext = createContext(CourseStateContextInitial);
+export const CourseActionsContext = createContext<CourseActions>(CourseActionsDefault);
