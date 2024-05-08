@@ -11,12 +11,16 @@ import {
     getAllFacultiesErrorAction,
     getAllFacultiesPendingAction,
     getAllFacultiesSuccessAction,
+    getFacultiesBySkillsErrorAction,
+    getFacultiesBySkillsPendingAction,
+    getFacultiesBySkillsSuccessAction,
     getFacultyErrorAction,
     getFacultyPendingAction,
     getFacultySuccessAction
 } from './action';
 import { FacultyActionsContext, FacultyStateContext, FacultyStateContextInitial } from './context';
 import facultyReducer from './reducer';
+import { Answer } from '../ResponseProvider/interface';
 
 interface FacultyProviderProps {
     children: React.ReactNode;
@@ -41,9 +45,7 @@ const FacultyProvider: React.FC<FacultyProviderProps> = ({ children }) => {
                 .then(res => res.data)
                 .then((resp) => {
                 if (resp?.success) {
-                   message.success("Fetched Faculty succesfully");
                    dispatch(getFacultySuccessAction(resp?.result));
-                  
                 } else {
                     message.error("Faculty not fetched")
                     dispatch(getFacultyErrorAction())//If it didn't follow endpoint policies 
@@ -90,10 +92,27 @@ const FacultyProvider: React.FC<FacultyProviderProps> = ({ children }) => {
             message.error("Faculty not deleted");
         }
     }
-
+    const GetFacultyBySkills = async (skills: any) =>{
+        try {
+            dispatch(getFacultiesBySkillsPendingAction());
+            instance.post(`/Faculty/GetFacultiesBySkills`,skills)
+                .then(res => res.data)
+                .then((resp) => {
+                if (resp?.success) {
+                    dispatch(getFacultiesBySkillsSuccessAction(resp?.result));
+                } else {
+                   dispatch(getFacultiesBySkillsErrorAction())
+                }
+            })
+        } catch(error){
+            message.error("Faculties not fetched")
+            dispatch(getFacultiesBySkillsErrorAction())
+        }
+    }
+  
     return (
         <FacultyStateContext.Provider value={state}>
-            <FacultyActionsContext.Provider value={{ GetFaculty, GetAllFaculties, DeleteFaculty}}>
+            <FacultyActionsContext.Provider value={{ GetFaculty, GetAllFaculties, DeleteFaculty, GetFacultyBySkills}}>
                 {children}
             </FacultyActionsContext.Provider>
         </FacultyStateContext.Provider>

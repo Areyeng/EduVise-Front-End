@@ -28,6 +28,18 @@ const facultyReducer = handleActions({
       ...state,
       ...action.payload
     }),
+    [FacultyActionTypes.GetFacultiesBySkillsPending]: (state, action) => ({
+      ...state,
+      ...action.payload
+    }),
+    [FacultyActionTypes.GetFacultiesBySkillsSuccess]: (state, action) => ({
+      ...state,
+      ...action.payload
+    }),
+    [FacultyActionTypes.GetFacultiesBySkillsError]: (state, action) => ({
+      ...state,
+      ...action.payload
+    }),
     [FacultyActionTypes.DeleteFacultyPending]: (state, action) => ({
       ...state,
       ...action.payload

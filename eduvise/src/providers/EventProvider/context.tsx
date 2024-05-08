@@ -1,17 +1,17 @@
 import { createContext } from 'react';
 import { Event, EventActions, EventState} from './interface';
 
-export const INITIAL_INSTITUTION: Event = {
+export const INITIAL_EVENT: Event = {
     name : '',
     description : '',
     type : '',
-    dateTime : new Date,
+    date : '',
     venue : '',
     id:''
 }
 
 export const EventStateContextInitial: EventState = {
-    event: INITIAL_INSTITUTION,
+    event: INITIAL_EVENT,
     events: [],
     isPending: false,
     isSuccess: false,
@@ -21,6 +21,7 @@ export const EventStateContextInitial: EventState = {
 export const EventActionsDefault =  {
     GetEvent: (EventId: string) => {},
     GetAllEvents: () => Promise<any>,
+    GetAllEventsByClosing: () => Promise<any>,
     DeleteEvent: (id: string) => {},
 }
 

@@ -62,6 +62,23 @@ const FundingProvider: React.FC<FundingProviderProps> = ({ children }) => {
             dispatch(getAllFundingsErrorAction())
         }
     }
+    const GetAllFundingsByClosing = async () => {
+        try {
+            dispatch(getAllFundingsPendingAction());
+            instance.get('/Funding/GetAllFundingsByClosing')
+                .then(res => res.data)
+                .then((resp) => {
+                if (resp?.success) {
+                   dispatch(getAllFundingsSuccessAction(resp?.result));
+                } else {
+                   dispatch(getAllFundingsErrorAction())
+                }
+            });
+        } catch (error) {
+            message.error("Fundings not fetched")
+            dispatch(getAllFundingsErrorAction())
+        }
+    }
     const DeleteFunding = async (id:string) => {
         try {
             dispatch(deleteFundingPendingAction());
@@ -81,7 +98,7 @@ const FundingProvider: React.FC<FundingProviderProps> = ({ children }) => {
     }
     return (
         <FundingStateContext.Provider value={state}>
-            <FundingActionsContext.Provider value={{ GetFunding, GetAllFundings, DeleteFunding}}>
+            <FundingActionsContext.Provider value={{ GetFunding, GetAllFundings,GetAllFundingsByClosing, DeleteFunding}}>
                 {children}
             </FundingActionsContext.Provider>
         </FundingStateContext.Provider>

@@ -10,6 +10,13 @@ import { FundingProvider } from "@/providers/FundingProvider";
 import { EventProvider } from "@/providers/EventProvider";
 import { RegisterProvider } from "@/providers/RegisterAuth";
 import { AuthProvider } from "@/providers/AuthProvider";
+import { QuestionProvider } from "@/providers/QuestionProvider";
+import { AnswerProvider } from "@/providers/ResponseProvider";
+import { LearnerInfoProvider } from "@/providers/LearnerProvider";
+import { SavedInstitutionProvider } from "@/providers/LearnerInstitution";
+import { SavedFundingProvider } from "@/providers/LearnerFunding";
+import { SavedEventProvider } from "@/providers/LearnerEvent";
+import { SavedCourseProvider } from "@/providers/LearnerCourse";
 
 
 
@@ -24,26 +31,40 @@ export default function RootLayout({
   return (
     <AuthProvider>
       <RegisterProvider>
-        <InstitutionProvider>
-          <FacultyProvider>
-            <CourseProvider>
-              <FundingProvider>
-                <EventProvider>
-                  <html lang="en">
-                    <body className={inter.className}>
-                      <NavBar/>
-                      {children}
-                      <AppFooter/>
-                    </body>
-                  </html>
-                </EventProvider>
-              </FundingProvider>
-            </CourseProvider>
-          </FacultyProvider>
-        </InstitutionProvider>
+        <LearnerInfoProvider>
+          <InstitutionProvider>
+            <FacultyProvider>
+              <CourseProvider>
+                <FundingProvider>
+                  <EventProvider>
+                    <AnswerProvider>
+                      <QuestionProvider>
+                        <SavedInstitutionProvider>
+                          <SavedFundingProvider>
+                            <SavedEventProvider>
+                              <SavedCourseProvider>
+                                <html lang="en">
+                                  <body className={inter.className}>
+                                    <NavBar/>
+                                    {children}
+                                    <AppFooter/>
+                                  </body>
+                                </html>
+                              </SavedCourseProvider>
+                            </SavedEventProvider>
+                          </SavedFundingProvider>
+                        </SavedInstitutionProvider>
+                      </QuestionProvider>
+                    </AnswerProvider>
+                  </EventProvider>
+                </FundingProvider>
+              </CourseProvider>
+            </FacultyProvider>
+          </InstitutionProvider>
+        </LearnerInfoProvider>
       </RegisterProvider>
     </AuthProvider>
-    
+     
     
   );
 }

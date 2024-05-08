@@ -7,7 +7,9 @@ import { AuthActionContext, AuthStateContext, IAuthReq, INITIAL_STATE } from './
 import { Details } from './interface';
 import userReducer from './reducer';
 import { getAxiosInstance, postData } from '@/utils/api';
-import { loginErrorAction, loginRequestAction, loginSuccessAction } from './action';
+import { loginErrorAction, loginRequestAction, loginSuccessAction, logoutErrorAction, logoutRequestAction, logoutSuccessAction } from './action';
+import { useLearnerInfoActions } from '../LearnerProvider';
+import { InfoActionsContext } from '../LearnerProvider/context';
 
 interface AuthProviderProps{
     children: React.ReactNode;
@@ -15,8 +17,9 @@ interface AuthProviderProps{
 
 const AuthProvider: React.FC<AuthProviderProps>=({ children })=>{
     const [state,dispatch] = useReducer(userReducer, INITIAL_STATE);
-   
+    const { GetLearnerInfo } = useContext(InfoActionsContext);
     const { push } = useRouter();
+
     const instance = useMemo(() => {
       const accessToken = state.authRes?.accessToken;
       if (accessToken) {
@@ -25,63 +28,50 @@ const AuthProvider: React.FC<AuthProviderProps>=({ children })=>{
       return getAxiosInstance("");
     }, [state.authRes]);
    
-    const _login = async (details: Details) => {
+    const login = (details: IAuthReq) => {
       const endpoint = process.env.NEXT_PUBLIC_API_LOGIN_URL + 'TokenAuth/Authenticate';
-      try{
-          console.log("login called...")
-        const response = await postData(endpoint, details);
-        if(response.status==200){
-            message.error("Successfully logged in");
-            dispatch({type: "LogIn",payload:response.data.result.accessToken})
-            localStorage.setItem('token',response.data.result.accessToken)
-            localStorage.setItem('userID',response.data.result.userId)
-            localStorage.setItem('email',details.userNameOrEmailAddress)
-            push('/explore');
-        }
-        else{
-            message.error("Failed to log in");
-        }
-      } catch(error){
-              console.log("Error");
+      try {
+        dispatch(loginRequestAction());
+        instance.post(endpoint, details)
+          .then(res => res.data)
+          .then((resp) => {
+          if (resp?.success) {
+              message.success("Logged in succesfully");
+              dispatch(loginSuccessAction(resp?.result));
+              localStorage.setItem('token', resp?.result.accessToken);
+              localStorage.setItem('email',details.userNameOrEmailAddress);
+              GetLearnerInfo();
+              push('/explore');
+          } else {
+              dispatch(loginErrorAction())
+          }
+        })
+      } catch (error) {
+        message.error("learner not added")
+        dispatch(loginErrorAction())
       }
     }
-  const login = (details: IAuthReq) => {
-    const endpoint = process.env.NEXT_PUBLIC_API_LOGIN_URL + 'TokenAuth/Authenticate';
-    try {
-      dispatch(loginRequestAction());
-      instance.post(endpoint, details)
-        .then(res => res.data)
-        .then((resp) => {
-        if (resp?.success) {
-            message.success("Logged in succesfully");
-            dispatch(loginSuccessAction(resp?.result));
-            localStorage.setItem('token', resp?.result.accessToken);
-            push('/explore');
-        } else {
-            dispatch(loginErrorAction())
-        }
-      })
-    } catch (error) {
-      message.error("learner not added")
-      dispatch(loginErrorAction())
-    }
-  }
-  const logout = () => {
+    const logout = () => {
           localStorage.removeItem('token');
-          dispatch({type: "LogOut"})
+          const auth=localStorage.getItem('token');
+         
+          dispatch(logoutRequestAction());
           if(localStorage.getItem('token') === null) {
+              dispatch(logoutSuccessAction());
               push('/login')
           }
           else
           {
+            dispatch(logoutErrorAction())
             message.error('An error occurred while logging out');
           }
-       
+   
     };
+   
 
       return (
         <AuthStateContext.Provider value={state}>
-            <AuthActionContext.Provider value={{ login, logout}}>
+            <AuthActionContext.Provider value={{ login,logout}}>
               {children}
             </AuthActionContext.Provider>
          </AuthStateContext.Provider>

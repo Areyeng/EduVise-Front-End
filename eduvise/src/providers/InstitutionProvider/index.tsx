@@ -28,6 +28,7 @@ const InstitutionProvider: React.FC<InstitutionProviderProps> = ({ children }) =
     
     const instance = useMemo(() => {
         const accessToken = authRes?.accessToken;
+        console.log("auth res::",authRes)
         if (accessToken) {
           return getAxiosInstance(accessToken)
         }
@@ -70,6 +71,22 @@ const InstitutionProvider: React.FC<InstitutionProviderProps> = ({ children }) =
             dispatch(getAllInstitutionsErrorAction())
         }
     }
+    const GetAllInstitutionsByClosing = async () => {
+        try {
+                dispatch(getAllInstitutionsPendingAction());
+                instance.get('/Institution/GetAllInstitutionsByClosing')
+                    .then(res => res.data)
+                    .then((resp) => {
+                if (resp?.success) {
+                    dispatch(getAllInstitutionsSuccessAction(resp?.result));
+                } else {
+                    dispatch(getAllInstitutionsErrorAction()) 
+                }
+            })
+        } catch (error) {
+            dispatch(getAllInstitutionsErrorAction())
+        }
+    }
     const DeleteInstitution = async (id:string) => {
         try {
             dispatch(deleteInstitutionPendingAction());
@@ -90,7 +107,7 @@ const InstitutionProvider: React.FC<InstitutionProviderProps> = ({ children }) =
     }
     return (
         <InstitutionStateContext.Provider value={state}>
-            <InstitutionActionsContext.Provider value={{ GetInstitution, GetAllInstitutions, DeleteInstitution }}>
+            <InstitutionActionsContext.Provider value={{ GetInstitution, GetAllInstitutions,GetAllInstitutionsByClosing, DeleteInstitution }}>
                 {children}
             </InstitutionActionsContext.Provider>
         </InstitutionStateContext.Provider>

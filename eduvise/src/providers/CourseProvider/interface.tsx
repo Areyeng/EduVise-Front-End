@@ -1,40 +1,41 @@
 export interface Course {
-    Name : string,
-    Description : string,
-    InstitutionCriteria :string,
-    FacultyCriteria : string,
-    AnnualAmount : number,
-    Duration : number,
-    OpeningDate : Date,
-    ClosingDate : Date,
-    CourseLink : Date,
+    name : string,
+    description : string,
+    facultyName : string,
+    jobTitles : string,
+    avgAPS : number,
+    avgDuration : string,
+    avgTuition :string,
+    facultyId : string,
+    id: string
 }
 
 export interface CourseState {
-    institution?: Course;
-    institutions?: Course[];
+    course?: Course;
+    courses?: Course[];
     isPending?: boolean;
     isSuccess?: boolean;
     isError?: boolean;
 }
 
 export interface CourseActions {
-    GetCourse: (CourseId: string) => void;
+    GetCourse: (courseId: string) => void;
     GetAllCourses: () => Promise<any>;
-    DeleteCourse: (id: string) => void;
+    GetCoursesByFacultyId:(facultyId: string)=> Promise<any>;
 }
+
 export interface CourseAction{
     type: string,
     payload?: {
-        Name : string,
-        Description : string,
-        InstitutionCriteria :string,
-        FacultyCriteria : string,
-        AnnualAmount : number,
-        Duration : number,
-        OpeningDate : Date,
-        ClosingDate : Date,
-        CourseLink : Date,
+        name : string,
+        description : string,
+        facultyName : string,
+        jobTitles : number,
+        avgAPS : string,
+        avgDuration : string,
+        avgTuition :string,
+        facultyId : string,
+        id: string
     } 
 }
 
@@ -43,6 +44,10 @@ export interface GetCourse{
     payload: CourseState[];
 }
 export interface GetAllCourses{
+    type: string;
+    payload?: CourseState[];
+}
+export interface GetCoursesByFacultyId{
     type: string;
     payload?: CourseState[];
 }

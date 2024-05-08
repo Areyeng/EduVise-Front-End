@@ -23,6 +23,7 @@ export interface FundingState {
 export interface FundingActions {
     GetFunding: (FundingId: string) => void;
     GetAllFundings: () => Promise<any>;
+    GetAllFundingsByClosing: () => Promise<any>;
     DeleteFunding: (id: string) => void;
 }
 export interface FundingAction{
@@ -47,6 +48,10 @@ export interface GetFunding{
     payload: FundingState[];
 }
 export interface GetAllFundings{
+    type: string;
+    payload?: FundingState[];
+}
+export interface GetAllFundingsByClosing{
     type: string;
     payload?: FundingState[];
 }

@@ -1,6 +1,8 @@
 'use client'
 import Image from "next/image";
-import styles from "./style.module.css";
+import style from "./style.module.css";
+import { useRouter } from 'next/navigation';
+import { useStyles } from "./style";
 import SearchBar from "@/components/SearchBar";
 import { useContext, useEffect, useState } from "react";
 import { InstitutionActionsContext } from "@/providers/InstitutionProvider/context";
@@ -14,6 +16,7 @@ import { useFundingState } from "@/providers/FundingProvider";
 import FundingCard from "@/components/FundingCard";
 import { EventActionsContext } from "@/providers/EventProvider/context";
 import EventCarousel from "@/components/EventCarousel";
+import { Button } from "antd";
 
 export default function Explore(): React.ReactNode {
   const { GetAllInstitutions } = useContext(InstitutionActionsContext);
@@ -23,7 +26,8 @@ export default function Explore(): React.ReactNode {
   const { institutions } = useInstitutionState();
   const { faculties } = useFacultyState();
   const { fundings} = useFundingState();
-
+  const { styles, cx } = useStyles();
+  const router = useRouter();
   useEffect(() => {
     try {
       GetAllInstitutions().then(() => {
@@ -42,44 +46,52 @@ export default function Explore(): React.ReactNode {
       console.error('Error fetching all institutions:', error);
     }
   }, []);
-
-  return (
-    <div className={styles.container}>
-      <div className={styles.top}>
-        <div className={styles.backgroundImage}>
-          <Image src="/university-bg.jpg" width="1520" height="470" alt="eduvise-logo" />
-        </div>
-        <div className={styles.backgroundDiv}>
-          <h1 className={styles.heading}>EXPLORE</h1>
-          <SearchBar />
-        </div>
-      </div>
-      <div>
-        <div>
-          <div className={styles.heading}>
-            <p>INSTITUTIONS</p>
+  const handleSubmit = (values:any) => {
+    router.push('/assessment');
+  };
+  return(
+          <div className={style.container}>
+            <div className={style.top}>
+              <div className={style.backgroundImage}>
+                <Image src="/college.jpg" width="1520" height="370" alt="eduvise-logo"  />
+              </div>
+              <div className={style.backgroundDiv}>
+                <h1 className={style.topHeading}>EXPLORE</h1>
+                <SearchBar />
+              </div>
+            </div>
+            <div className={style.assessment}>
+              <div className={style.start}>
+                  <p className={style.startText}>Unlock Your Future: Take The Career Assessment Now! Discover your strengths, preferences, and potential career paths with our comprehensive assessment. Start exploring today!</p>
+                  <Button onClick={handleSubmit} className={styles.button}>Start Assessment</Button>
+              </div>
+            </div>
+            <div className={style.allInfo}>
+              <div>
+                <div className={style.heading}>
+                  <p>INSTITUTIONS</p>
+                </div>
+                <InstitutionCard/>
+              </div>
+              <div>
+                <div className={style.heading}>
+                  <p>FACULTIES</p>
+                </div>
+                <FacultyCard/>
+              </div>
+              <div>
+                <div className={style.heading}>
+                  <p>FUNDING</p>
+                </div>
+                <FundingCard/>
+              </div>
+              <div>
+                <div className={style.heading}>
+                  <p>EVENTS</p>
+                </div>
+                <EventCarousel/>
+              </div>
+            </div>
           </div>
-          <InstitutionCard/>
-        </div>
-        <div>
-          <div className={styles.heading}>
-            <p>FACULTIES</p>
-          </div>
-          <FacultyCard/>
-        </div>
-        <div>
-          <div className={styles.heading}>
-            <p>FUNDING</p>
-          </div>
-          <FundingCard/>
-        </div>
-        <div>
-          <div className={styles.heading}>
-            <p>EVENTS</p>
-          </div>
-          <EventCarousel/>
-        </div>
-      </div>
-    </div>
   );
 }

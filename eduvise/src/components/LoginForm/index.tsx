@@ -7,7 +7,7 @@ import { Details } from '@/providers/AuthProvider/interface';
 
 export default function LoginForm(): React.ReactNode{
     const {login} = useAuthActions();
-    const {isAuthenticated} = useAuthState();
+    const { isAuthenticated } = useAuthState();
     const { styles, cx } = useStyles();
     let authToken: string | null;
   

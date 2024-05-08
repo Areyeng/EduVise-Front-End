@@ -1,0 +1,102 @@
+.container {
+    height: 1000px;
+}
+
+.backgroundImage {
+    height: 900px;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: -1;
+}
+
+.profileImage {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    position: absolute;
+    top: 180px;
+    margin-top: 80px;
+    margin-left: 200px;
+    overflow: hidden; 
+    z-index: 1; 
+}
+
+.profileName {
+    color: #385A64;
+    font-size: 45px;
+    margin-top: 50px;
+    margin-left: 500px;
+}
+.profileInfo {
+    width: 1300px;
+    height:400px;
+    margin-top:500px;
+    margin-left:80px;
+    background-color: #385A64;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    display: flex; /* Use flexbox */
+    justify-content: space-between; /* Distribute items along the main axis */
+    
+  }
+.form{
+    width: 450px;
+    margin-top: 60px;
+    flex:1;
+}  
+.additionalInfo {
+    width: 650px;
+    height: 100px;
+    margin-top: 60px;
+    margin-left: 10px;
+ 
+  }
+.line {
+    width: 1px;
+    height: 100%;
+    margin-left: 0 auto;
+    background-color: #ccc;
+}
+.infoTitle {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+    margin-left: 50px;
+  }
+  
+  .infoItem {
+    margin-top: 10px;
+    margin-left: 50px;
+ 
+  }
+  
+  .infoLabel {
+    font-weight: bold;
+    color: white;
+    margin-right: 10px;
+  }  
+  .infoText {
+    color: white
+ 
+  }
+  
+.additionalContent {
+    position: absolute;
+    top: 360px; 
+    left: 0;
+    width: 1520px;
+    height: 200px;
+    background-color: ghostwhite;
+    z-index: 0; 
+}
+
+.profileActivity {
+    width: 1520px;
+    height: 500px;
+    margin-top: 0px;
+    background-color: white;
+}

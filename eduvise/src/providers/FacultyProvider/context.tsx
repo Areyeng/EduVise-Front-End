@@ -1,7 +1,8 @@
 import { createContext } from 'react';
 import { Faculty, FacultyActions, FacultyState} from './interface';
+import { Answer } from '../ResponseProvider/interface';
 
-export const INITIAL_INSTITUTION: Faculty = {
+export const INITIAL_FACULTY: Faculty = {
     name : '',
     description : '',
     requiredSubjects : '',
@@ -9,8 +10,8 @@ export const INITIAL_INSTITUTION: Faculty = {
 }
 
 export const FacultyStateContextInitial: FacultyState = {
-    faculty: INITIAL_INSTITUTION,
-    faculties: [],
+    faculty : INITIAL_FACULTY,
+    faculties : [],
     isPending: false,
     isSuccess: false,
     isError: false,
@@ -19,7 +20,9 @@ export const FacultyStateContextInitial: FacultyState = {
 export const FacultyActionsDefault =  {
     GetFaculty: (FacultyId: string) => {},
     GetAllFaculties: async () => Promise<any>,
-    DeleteFaculties: (id: string) => {},
+    GetFacultyBySkills: async (skills:Answer)=> Promise<any>,
+    AddLearnerFaculties: (skills:Answer,learner:Response)=> Promise<any>,
+    DeleteFaculty: (id: string) => {},
 }
 
 export const FacultyStateContext = createContext(FacultyStateContextInitial);

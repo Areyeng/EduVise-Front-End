@@ -12,6 +12,10 @@ export enum CourseActionTypes {
     GetAllCoursesSuccess = "GetAllCoursesSuccess",
     GetAllCoursesError = "GetAllCoursesError",
 
+    GetCoursesByFacultyPending = "GetCoursesByFacultyPending",
+    GetCoursesByFacultySuccess = "GetCoursesByFacultyIdSuccess",
+    GetCoursesByFacultyError= "GetCoursesByFacultyIdError",
+
     DeleteCoursePending = "DeleteCoursePending",   
     DeleteCourseSuccess = "DeleteCourseSuccess", 
     DeleteCourseError = "DeleteCourseError", 
@@ -19,7 +23,6 @@ export enum CourseActionTypes {
 }
 export const getCoursePendingAction = createAction(
     CourseActionTypes.GetCoursePending,
-    // Payload creator returns payload of the action 
     () => ({
         isPending: true,
         isSuccess: false,
@@ -28,17 +31,15 @@ export const getCoursePendingAction = createAction(
 );
 export const getCourseSuccessAction = createAction(
     CourseActionTypes.GetCourseSuccess,
-    // Payload creator returns payload of the action 
-    (newCourse: Course) => ({
+    (course: Course) => ({
         isPending: false,
         isSuccess: true,
         isError: false,
-        newCourse
+        course
     })
 );
 export const getCourseErrorAction = createAction(
     CourseActionTypes.GetCourseError,
-    // Payload creator returns payload of the action 
     () => ({
         isPending: false,
         isSuccess: false,
@@ -48,7 +49,6 @@ export const getCourseErrorAction = createAction(
 //
 export const getAllCoursesPendingAction = createAction(
     CourseActionTypes.GetAllCoursesPending,
-    // Payload creator returns payload of the action 
     () => ({
         isPending: true,
         isSuccess: false,
@@ -57,12 +57,11 @@ export const getAllCoursesPendingAction = createAction(
 );
 export const getAllCoursesSuccessAction = createAction(
     CourseActionTypes.GetAllCoursesSuccess,
-    // Payload creator returns payload of the action 
-    (Courses: Course[]) => ({
+    (courses: Course[]) => ({
         isPending: false,
         isSuccess: true,
         isError: false,
-        Courses
+        courses
     })
 );
 export const getAllCoursesErrorAction = createAction(
@@ -74,28 +73,26 @@ export const getAllCoursesErrorAction = createAction(
         isError: true
     })
 );
-//
-export const deleteCoursePendingAction = createAction(
-    CourseActionTypes.DeleteCoursePending,
-    // Payload creator returns payload of the action 
+//by faculty
+export const getAllCoursesByFacultyPendingAction = createAction(
+    CourseActionTypes.GetCoursesByFacultyPending, 
     () => ({
         isPending: true,
         isSuccess: false,
         isError: false
     })
 );
-export const deleteCourseSuccessAction = createAction(
-    CourseActionTypes.DeleteCourseSuccess,
-    // Payload creator returns payload of the action 
-    () => ({
+export const getAllCoursesByFacultySuccessAction = createAction(
+    CourseActionTypes.GetCoursesByFacultySuccess,
+    (courses: Course[]) => ({
         isPending: false,
         isSuccess: true,
-        isError: false
+        isError: false,
+        courses
     })
 );
-export const deleteCourseErrorAction = createAction(
-    CourseActionTypes.DeleteCourseError,
-    // Payload creator returns payload of the action 
+export const getAllCoursesByFacultyErrorAction = createAction(
+    CourseActionTypes.GetCoursesByFacultyError,
     () => ({
         isPending: false,
         isSuccess: false,

@@ -2,14 +2,15 @@ import React from 'react';
 import { Button, DatePicker, Form, Input } from 'antd';
 import { useStyles } from "./style";
 import { useRegisterActions } from '@/providers/RegisterAuth';
-import moment from 'moment';
+import { useRouter } from 'next/navigation';
 
 export default function RegisterForm(): React.ReactNode {
     const { Register } = useRegisterActions();
     const { styles, cx } = useStyles();
-
+    const router = useRouter()
     const handleSubmit = (values: any) => {
         Register(values);
+        router.push('/login');
     };
 
     const validateEmail = (_: any, value: string) => {
@@ -52,28 +53,17 @@ export default function RegisterForm(): React.ReactNode {
             <Form.Item label="LAST NAME" name="surname" className={cx(styles.lastNameFormItem)}>
                 <Input  className={cx(styles.shortInput)} placeholder='Last Name'/>
             </Form.Item>
-            {/* <Form.Item label="DATE OF BIRTH" name="birthDate">
-                <DatePicker
-                    className={cx(styles.input)}
-                    placeholder='Select Birth Date'
-                    format="YYYY-MM-DD"
-                    onChange={(date, dateString) => {
-                        const dateOnly = moment(dateString, 'YYYY-MM-DD').format('YYYY-MM-DD');
-                        console.log('DateOnly:', dateOnly);
-                    }}
-                />
-            </Form.Item> */}
             <Form.Item 
                 label="EMAIL ADDRESS"  
                 name="emailAddress"
-                rules={[{ required: true, message: 'Please enter your email address' }]}
+                rules={[{ required: true, message: 'Please enter your email address' },{ validator: validateEmail }]}
             >
                 <Input className={cx(styles.input)} placeholder='Email Address'/>
             </Form.Item>
             <Form.Item 
                 label="PHONE NUMBER"
                 name="phoneNumber"
-                rules={[{ required: true, message: 'Please enter your phone number' },]}
+                rules={[{ required: true, message: 'Please enter your phone number' }, { validator: validatePhoneNumber }]}
             >
                 <Input className={cx(styles.input)}  placeholder='Phone Number'/>
             </Form.Item>

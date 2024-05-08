@@ -1,0 +1,194 @@
+.container{
+    height: 1000px;
+  }
+  .backgroundImage {
+      height: 900px;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: -1;
+  
+  }
+  .backgroundDiv {
+      width: 1250px;
+      height:200px;
+      margin-top: 50px;
+      margin-left: 140px;
+      margin-bottom: 20px;
+      background-color: white;
+      opacity: 0.7;
+  }
+  .heading{
+      color: #385A64;
+      text-align: center;
+      font-size: 75px;
+      padding: 10px;
+      background-color: white;
+      width: 600px;
+      margin: 0px auto;
+      border-radius: 10px;
+  }
+  .topHeading{
+      color:#385A64;
+      text-align: center;
+      font-size: 45px;
+      padding-top: 50px;
+  }
+  .summary{
+    color: #385A64;
+    margin-top: 50px;
+    text-align: center;
+  }
+  .header{
+      width: 200px;
+      margin-top: 80px;
+      margin-left: 800px;
+      text-align: center;
+  }
+  .text{
+      font-size: 20px;
+      font-weight: bold;
+      color: #385A64;
+  }
+  .institutionInfo {
+      width: 1200px;
+      height:300px;
+      margin-top:100px;
+      margin-left:180px;
+      background-color: #385A64;
+      padding: 10px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      display: flex; 
+      justify-content: space-between; 
+      
+  }
+  .institutionStatus{
+      justify-self: flex-end;
+      width: 450px;
+      margin-top: 60px;
+      flex:1;
+  }
+  .status{
+      width: 300px;
+      height: 150px;
+      color: white;
+      margin-top: 10px;
+      margin-left: 350px;
+  }
+  .institutionLinks {
+      width: 450px;
+      height: 100px;
+      margin-top: 60px;
+      margin-left: 10px;
+   
+  }
+  .institutionLogo{
+      width: 400px;
+      height: 400px;
+      border: 5px solid #385A64;
+      overflow: hidden; 
+      position: absolute;
+      top:0;
+      margin-top: 400px;
+      margin-left: 130px;
+      clip-path: polygon(25% 0, 75% 0, 100% 25%, 100% 75%, 75% 100%, 25% 100%, 0 75%, 0 25%);
+  }
+  .institutionLogo::before {
+      content: '';
+      width: 100%;
+      height: 100%;
+      border: 5px solid #385A64;
+      box-sizing: border-box;
+      position: absolute;
+      top: 0;
+      left: 0;
+  }
+  .line {
+      width: 1px;
+      height: 100%;
+      margin-left: 0 auto;
+      background-color: #ccc;
+  }
+  .infoTitle {
+      font-size: 24px;
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 20px;
+      margin-left: 50px;
+  }
+  
+  .statusItem {
+      margin-bottom: 10px;
+  }
+    
+  .statusLabel {
+      font-weight: bold;
+      margin-right: 10px;
+  }
+    
+  .infoContainer {
+    display: none;
+    flex-wrap: wrap;
+    padding: 20px;
+
+  }
+  
+  .open {
+    display: flex;
+  }
+  
+  .infoColumn {
+    width: 250px;
+    padding: 10px;
+    box-sizing: border-box;
+    text-align: center;
+  }
+  
+  .infoHeader {
+    font-size: 18px;
+    margin: 0 0 10px;
+  }
+  
+  .verticalLine {
+    border: 1px solid #ccc;
+    height: 150px;
+    margin: 0 10px;
+  }
+  
+  .buttonContainer {
+    flex: 0 1 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  
+  .arrowButton {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .arrowUp, .arrowDown {
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+  }
+  
+  .arrowUp {
+    transform: rotate(-135deg);
+    -webkit-transform: rotate(-135deg);
+  }
+  
+  .arrowDown {
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+  }
+  
+  @media screen and (max-width: 768px) {
+    .infoColumn {
+      flex: 0 1 100%;
+    }
+  }

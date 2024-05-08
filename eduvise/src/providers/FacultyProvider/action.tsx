@@ -12,6 +12,10 @@ export enum FacultyActionTypes {
     GetAllFacultiesSuccess = "GetAllFacultiesSuccess",
     GetAllFacultiesError = "GetAllFacultiessError",
 
+    GetFacultiesBySkillsPending = "GetFacultiesBySkillsPending",
+    GetFacultiesBySkillsSuccess = "GetFacultiesBySkillsSuccess",
+    GetFacultiesBySkillsError = "GetFacultiesBySkillsError",
+
     DeleteFacultyPending = "DeleteFacultyPending",   
     DeleteFacultySuccess = "DeleteFacultySuccess", 
     DeleteFacultyError = "DeleteFacultyError",
@@ -69,7 +73,31 @@ export const getAllFacultiesErrorAction = createAction(
         isError: true
     })
 );
-//
+export const getFacultiesBySkillsPendingAction = createAction(
+    FacultyActionTypes.GetFacultiesBySkillsPending,
+    () => ({
+        isPending: true,
+        isSuccess: false,
+        isError: false
+    })
+);
+export const getFacultiesBySkillsSuccessAction = createAction(
+    FacultyActionTypes.GetFacultiesBySkillsSuccess,
+    (faculties: Faculty[]) => ({
+        isPending: false,
+        isSuccess: true,
+        isError: false,
+        faculties 
+    })
+);
+export const getFacultiesBySkillsErrorAction = createAction(
+    FacultyActionTypes.GetFacultiesBySkillsError,
+    () => ({
+        isPending: false,
+        isSuccess: false,
+        isError: true
+    })
+);
 export const deleteFacultyPendingAction = createAction(
     FacultyActionTypes.DeleteFacultyPending,
     () => ({

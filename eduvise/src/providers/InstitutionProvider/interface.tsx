@@ -24,6 +24,7 @@ export interface InstitutionState {
 export interface InstitutionActions {
     GetInstitution: (InstitutionId: string) => void;
     GetAllInstitutions: () => Promise<any>;
+    GetAllInstitutionsByClosing: () => Promise<any>;
     DeleteInstitution: (id: string) => void;
 }
 export interface InstitutionAction{
@@ -49,6 +50,10 @@ export interface GetInstitution{
     payload: InstitutionState[];
 }
 export interface GetAllInstitutions{
+    type: string;
+    payload?: InstitutionState[];
+}
+export interface  GetAllInstitutionsByClosing{
     type: string;
     payload?: InstitutionState[];
 }

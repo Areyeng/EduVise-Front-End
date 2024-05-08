@@ -21,7 +21,9 @@ export default function FacultyCard(): React.ReactNode {
   const handleApplyClick = (institutionId:string) => {
     router.push(`/faculty?id=${institutionId}`);
   };
-
+  const handleApplyClickCourses = (id:string)=>{
+    router.push(`/courses?id=${id}`);
+  }
   const handleViewMore = () => {
     setShowAll(true);
     router.push('/faculties');
@@ -36,22 +38,23 @@ export default function FacultyCard(): React.ReactNode {
     <div style={{ background: "", padding: "30px" }}>
       <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between" }}>
         {displayedRecords?.map((faculty, index) => (
-          <div key={index} style={{ flex: "0 1 calc(33.33% - 20px)", marginBottom: "20px" }}>
-            <Card title={faculty.name} bordered={false} style={{ width: "100%", height: '200px' }}>
+          <div key={index} style={{ flex: "0 1 calc(33.33% - 20px)", marginBottom: "20px", width: "calc(33.33% - 20px)" }}>
+            <Card title={faculty.name} bordered={false} className={styles.card}>
               <div style={{ display: "flex" }}>
                 <div style={{ flex: 1 }}>
                   <p>{getFirstSentence(faculty.description)}</p>
                 </div>
               </div>
-              <div style={{ marginTop: "10px", margin:'0 auto' }}>
+              <div style={{ marginTop: "20px", margin:'0 auto' }}>
                 <Button onClick={() => handleApplyClick(faculty.id)} className={styles.button}>WHERE TO STUDY</Button>
+                <Button onClick={() => handleApplyClickCourses(faculty.id)} className={styles.button}>SHOW POSSIBLE COURSES</Button>
               </div>
             </Card>
           </div>
         ))}
       </div>
       {currentPath === '/explore' && faculties && faculties.length > 3 && (
-        <div style={{ marginTop: "20px", textAlign: "center" }}>
+        <div style={{ marginTop: "10px", textAlign: "center" }}>
           <Button onClick={handleViewMore} className={styles.button}>View More</Button>
         </div>
       )}

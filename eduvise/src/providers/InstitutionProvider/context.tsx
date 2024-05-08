@@ -27,6 +27,7 @@ export const InstitutionStateContextInitial: InstitutionState = {
 export const InstitutionActionsDefault: InstitutionActions =  {
     GetInstitution: (InstitutionId: string) => {},
     GetAllInstitutions: async () => Promise<any>,
+    GetAllInstitutionsByClosing: async () => Promise<any>,
     DeleteInstitution: (id: string) => {},
 }
 

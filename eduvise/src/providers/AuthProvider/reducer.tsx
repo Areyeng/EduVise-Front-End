@@ -15,6 +15,31 @@ const userReducer = handleActions({
       ...state,
       ...action.payload
     }),
+    [AuthActionEnums.LogoutRequest]: (state, action) => ({
+      ...state,
+      ...action.payload
+    }),
+    [AuthActionEnums.LogoutSuccess]: (state, action) => ({
+      ...state,
+      ...action.payload
+    }),
+    [AuthActionEnums.LogoutError]: (state, action) => ({
+      ...state,
+      ...action.payload
+    }),
+    [AuthActionEnums.GetLearnerInfoPending ]: (state, action) => ({
+      ...state,
+      ...action.payload
+    }),
+    [AuthActionEnums.GetLearnerInfoSuccess]: (state, action) => ({
+      ...state,
+      ...action.payload
+    }),
+    [AuthActionEnums.GetLearnerInfoError]: (state, action) => ({
+      ...state,
+      ...action.payload
+    }),
+
   },
   INITIAL_STATE
 );

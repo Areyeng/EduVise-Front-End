@@ -1,8 +1,13 @@
+import { Answer } from "../ResponseProvider/interface";
+
+
+
 export interface Faculty {
    name : string,
    description : string,
    requiredSubjects : string,
-   id : string
+   id : string,
+   
 }
 
 export interface FacultyState {
@@ -17,6 +22,8 @@ export interface FacultyActions {
     GetFaculty: (FacultyId: string) => void;
     GetAllFaculties: () => Promise<any>;
     DeleteFaculty: (id: string) => void;
+    GetFacultyBySkills: (skills:Answer)=> Promise<any>;
+    
 }
 
 export interface FacultyAction{
@@ -33,8 +40,11 @@ export interface GetFaculty{
     type: string;
     payload: FacultyState[];
 }
-
 export interface GetAllFaculties{
+    type: string;
+    payload?: FacultyState[];
+}
+export interface GetFacultyBySkills{
     type: string;
     payload?: FacultyState[];
 }

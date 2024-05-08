@@ -1,14 +1,14 @@
 import { createContext } from 'react';
 
 export interface IAuthReq {
-    userNameOrEmailAddress: string;
-    password: string;
+    userNameOrEmailAddress: '';
+    password: '';
     rememberClient: boolean;
 }
 
 export interface IAuthRes {
-    accessToken: string;
-    encryptedAccessToken: string;
+    accessToken: '';
+    encryptedAccessToken: '';
     expireInSeconds: number;
     userId: number;
 }

@@ -4,13 +4,12 @@ export interface AuthState{
 }
 export interface AuthActions {
     login: (details: Details) => void,
-    logout: ()=>void;
+    logout: ()=> void;
     
 }
 export interface Details{
    userNameOrEmailAddress: string,
    password: string
-
 }
 export interface Action{
     type: string,

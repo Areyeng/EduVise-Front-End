@@ -2,7 +2,7 @@ import { CourseActionTypes } from "./action";
 import { CourseStateContextInitial } from "./context";
 import { handleActions } from "redux-actions";
 
-const CourseReducer = handleActions({
+const courseReducer = handleActions({
     [CourseActionTypes.GetCoursePending]: (state, action) => ({
       ...state,
       ...action.payload
@@ -27,18 +27,19 @@ const CourseReducer = handleActions({
       ...state,
       ...action.payload
     }),
-    [CourseActionTypes.DeleteCoursePending]: (state, action) => ({
+
+    [CourseActionTypes.GetCoursesByFacultyPending]: (state, action) => ({
       ...state,
       ...action.payload
     }),
-    [CourseActionTypes.DeleteCourseSuccess]: (state, action) => ({
+    [CourseActionTypes.GetCoursesByFacultySuccess]: (state, action) => ({
       ...state,
       ...action.payload
     }),
-    [CourseActionTypes.DeleteCourseError]: (state, action) => ({
+    [CourseActionTypes.GetCoursesByFacultyError]: (state, action) => ({
       ...state,
       ...action.payload
     }),
   }, CourseStateContextInitial);
   
-  export default CourseReducer;
+  export default courseReducer;

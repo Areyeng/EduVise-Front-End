@@ -4,9 +4,9 @@ import { message } from 'antd';
 import React, { useContext, useMemo, useReducer } from 'react';
 import { useAuthState } from '../AuthProvider';
 import { 
-    deleteCourseErrorAction, 
-    deleteCoursePendingAction, 
-    deleteCourseSuccessAction, 
+    getAllCoursesByFacultyErrorAction, 
+    getAllCoursesByFacultyPendingAction, 
+    getAllCoursesByFacultySuccessAction, 
     getAllCoursesErrorAction, 
     getAllCoursesPendingAction, 
     getAllCoursesSuccessAction, 
@@ -41,9 +41,7 @@ const CourseProvider: React.FC<CourseProviderProps> = ({ children }) => {
                 .then(res => res.data)
                 .then((resp) => {
                 if (resp?.success) {
-                   message.success("Fetched Course succesfully");
-                   dispatch(getCourseSuccessAction(resp?.result));
-                  
+                    dispatch(getCourseSuccessAction(resp?.result));
                 } else {
                     message.error("Course not fetched")
                     dispatch(getCourseErrorAction())//If it didn't follow endpoint policies 
@@ -63,9 +61,7 @@ const CourseProvider: React.FC<CourseProviderProps> = ({ children }) => {
                 .then((resp) => {
                     console.log(JSON.stringify(resp));
                 if (resp?.success) {
-                   message.success("Fetched Course succesfully");
-                   console.log("items", resp?.result?.items);
-                   dispatch(getAllCoursesSuccessAction(resp?.result?.items));
+                    dispatch(getAllCoursesSuccessAction(resp?.result));
                 } else {
                    dispatch(getAllCoursesErrorAction())//If it didn't follow endpoint policies 
                 }
@@ -75,28 +71,28 @@ const CourseProvider: React.FC<CourseProviderProps> = ({ children }) => {
             dispatch(getAllCoursesErrorAction())
         }
     }
-    const DeleteCourse = async (id:string) => {
+    const GetCoursesByFacultyId = async (id:string) => {
         try {
-            dispatch(deleteCoursePendingAction());
-            instance.delete(`/Course/Delete?Id=${id}`)
+            dispatch(getAllCoursesByFacultyPendingAction());
+            instance.get(`/Course/GetCoursesByFacultyId?facultyId=${id}`)
                 .then(res => res.data)
                 .then((resp) => {
+                    console.log(JSON.stringify(resp));
                 if (resp?.success) {
-                    message.success("Deleted Courses succesfully");
-                    dispatch(deleteCourseSuccessAction());
+                    dispatch(getAllCoursesByFacultySuccessAction(resp?.result));
                 } else {
-                    dispatch(deleteCourseErrorAction()) 
+                   dispatch(getAllCoursesByFacultyErrorAction())//If it didn't follow endpoint policies 
                 }
             })
-
         } catch (error) {
-            message.error("Course not deleted");
+            message.error("Course not fetched")//API not running,Axios suddenly faulty
+            dispatch(getAllCoursesByFacultyErrorAction())
         }
     }
     return (
         
         <CourseStateContext.Provider value={state}>
-            <CourseActionsContext.Provider value={{ GetCourse, GetAllCourses, DeleteCourse}}>
+            <CourseActionsContext.Provider value={{ GetCourse, GetAllCourses, GetCoursesByFacultyId}}>
                 {children}
             </CourseActionsContext.Provider>
         </CourseStateContext.Provider>

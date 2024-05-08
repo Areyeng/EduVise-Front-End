@@ -6,9 +6,15 @@ export enum AuthActionEnums {
     LoginSuccess = "LogInsuccess",
     LoginError = "LogInError",
 
-    LogOut ="LogOut"
+    LogoutRequest = "LogoutRequest",
+    LogoutSuccess = "LogoutSuccess",
+    LogoutError = "LogoutError",
+
+    GetLearnerInfoPending = "GetInfoRequest",
+    GetLearnerInfoSuccess = "GetInfoSuccess",
+    GetLearnerInfoError = "GetInfoError",
 }
-export const logout = createAction(AuthActionEnums.LogOut);
+
 export const loginRequestAction = createAction<IAuthStateContext>(
     AuthActionEnums.LoginRequest,
     () => ({
@@ -29,6 +35,33 @@ export const loginSuccessAction = createAction<IAuthStateContext, IAuthRes>(
 );
 export const loginErrorAction = createAction<IAuthStateContext>(
     AuthActionEnums.LoginRequest,
+    () => ({
+        isPending: false,
+        isSuccess: false,
+        isError: true,
+        authRes: undefined
+    })
+);
+
+export const logoutRequestAction = createAction<IAuthStateContext>(
+    AuthActionEnums.LogoutRequest,
+    () => ({
+        isPending: true,
+        isSuccess: false,
+        isError: false,
+        authRes: undefined
+    })
+);
+export const logoutSuccessAction = createAction<IAuthStateContext>(
+    AuthActionEnums.LogoutSuccess,
+    () => ({
+        isPending: false,
+        isSuccess: true,
+        isError: false,
+    })
+);
+export const logoutErrorAction = createAction<IAuthStateContext>(
+    AuthActionEnums.LogoutError,
     () => ({
         isPending: false,
         isSuccess: false,

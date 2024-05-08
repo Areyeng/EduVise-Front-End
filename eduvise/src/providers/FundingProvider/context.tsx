@@ -1,7 +1,7 @@
 import { createContext } from 'react';
 import { Funding, FundingActions, FundingState} from './interface';
 
-export const INITIAL_INSTITUTION: Funding = {
+export const INITIAL_FUNDING: Funding = {
     name : '',
     description : '',
     institutionCriteria :'',
@@ -16,7 +16,7 @@ export const INITIAL_INSTITUTION: Funding = {
 }
 
 export const FundingStateContextInitial: FundingState = {
-    funding: INITIAL_INSTITUTION,
+    funding: INITIAL_FUNDING,
     fundings: [],
     isPending: false,
     isSuccess: false,
@@ -25,7 +25,8 @@ export const FundingStateContextInitial: FundingState = {
 
 export const FundingActionsDefault =  {
     GetFunding: (FundingId: string) => {},
-    GetAllFundings: () => Promise<any>,
+    GetAllFundings: async() => Promise<any>,
+    GetAllFundingsByClosing:async () => Promise<any>,
     DeleteFunding: (id: '') => {},
 }
 

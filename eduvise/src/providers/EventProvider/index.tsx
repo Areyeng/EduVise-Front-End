@@ -41,9 +41,7 @@ const EventProvider: React.FC<EventProviderProps> = ({ children }) => {
                 .then(res => res.data)
                 .then((resp) => {
                 if (resp?.success) {
-                   message.success("Fetched Event succesfully");
                    dispatch(getEventSuccessAction(resp?.result));
-                  
                 } else {
                     message.error("Event not fetched")
                     dispatch(getEventErrorAction())//If it didn't follow endpoint policies 
@@ -59,6 +57,23 @@ const EventProvider: React.FC<EventProviderProps> = ({ children }) => {
         try {
             dispatch(getAllEventsPendingAction());
             instance.get('/Event/GetAllEvents')
+                .then(res => res.data)
+                .then((resp) => {
+                if (resp?.success) {
+                    dispatch(getAllEventsSuccessAction(resp?.result));
+                } else {
+                    dispatch(getAllEventsErrorAction())//If it didn't follow endpoint policies 
+                }
+            })
+        } catch (error) {
+            message.error("Events not fetched")//API not running,Axios suddenly faulty
+            dispatch(getAllEventsErrorAction())
+        }
+    }
+    const GetAllEventsByClosing = async () => {
+        try {
+            dispatch(getAllEventsPendingAction());
+            instance.get('/Event/GetAllEventsByClosing')
                 .then(res => res.data)
                 .then((resp) => {
                 if (resp?.success) {
@@ -91,7 +106,7 @@ const EventProvider: React.FC<EventProviderProps> = ({ children }) => {
     }
     return (
         <EventStateContext.Provider value={state}>
-            <EventActionsContext.Provider value={{ GetEvent, GetAllEvents, DeleteEvent}}>
+            <EventActionsContext.Provider value={{ GetEvent, GetAllEvents,GetAllEventsByClosing, DeleteEvent}}>
                 {children}
             </EventActionsContext.Provider>
         </EventStateContext.Provider>
