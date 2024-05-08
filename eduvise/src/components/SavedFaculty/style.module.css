@@ -1,0 +1,37 @@
+.savedInfo{
+    width: 500px;
+    height: 350px;
+    background-color:#385A64;
+    border-radius: 10px;
+    margin: 80px;
+    text-align: center;
+    
+}
+.saveTitle{
+    width: 500px;
+    height: 100px;
+    background-color:white;
+    border:1px solid #385A64;
+    border-radius: 10px 10px 0px 0px;
+   
+}
+.displaySaved{
+    display: flex;
+}
+.saved{
+    width: 200px;
+    height: 200px;
+    background-color: white;
+    margin: 30px;
+    border-radius: 10px;
+    color: #334F57;
+    font-weight: bold;
+    
+}
+.name{
+    padding: 5px;
+}
+.heading{
+    padding: 30px;
+    color: #385A64;
+}
